@@ -1,18 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <display-name>jsp_web05</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
+  <display-name>web_news</display-name>
+ 
+  	<servlet>
+  	<servlet-name>index</servlet-name>
+  	<servlet-class>servlet.IndexNews</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  	<servlet-name>index</servlet-name>
+  	<url-pattern>/indexURl</url-pattern>
+  	</servlet-mapping>
   
-  	<resource-ref>
-  		<res-ref-name>jdbc/news</res-ref-name>
-  		<res-type>javax.sql.DataSource</res-type>
-  		<res-auth>Container</res-auth>
-  	</resource-ref>
+ 	<servlet>
+  	<servlet-name>admin</servlet-name>
+  	<servlet-class>servlet.Admin</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  	<servlet-name>admin</servlet-name>
+  	<url-pattern>/adminURl</url-pattern>
+  	</servlet-mapping> 
+  
+  	<servlet>
+  	<servlet-name>content</servlet-name>
+  	<servlet-class>servlet.NewsContent</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  	<servlet-name>content</servlet-name>
+  	<url-pattern>/contentURl</url-pattern>
+  	</servlet-mapping> 
+  
+  	<servlet>
+  	<servlet-name>AddNews</servlet-name>
+  	<servlet-class>servlet.AddNews</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  	<servlet-name>AddNews</servlet-name>
+  	<url-pattern>/AddNewsURl</url-pattern>
+  	</servlet-mapping> 
+  
+    <servlet>
+  	<servlet-name>AddTitle</servlet-name>
+  	<servlet-class>servlet.AddTitle</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  	<servlet-name>AddTitle</servlet-name>
+  	<url-pattern>/AddTitleURl</url-pattern>
+  	</servlet-mapping> 
+  
+  	<servlet>
+  	<servlet-name>SetTitle</servlet-name>
+  	<servlet-class>servlet.SetTitle</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  	<servlet-name>SetTitle</servlet-name>
+  	<url-pattern>/SetTitleURl</url-pattern>
+  	</servlet-mapping> 
+  	
+  	
+  	<!--filter配置  -->
+ 	<!-- 设置字符集 -->
+  	<filter>
+  		<filter-name>CharacterEncodingFilter</filter-name>
+  		<filter-class>fileter.CharacterEncodingFilter</filter-class>
+  		<init-param>
+  			<param-name>encoding</param-name>
+  			<param-value>UTF-8</param-value>
+  		</init-param>
+  	</filter>
+  	<filter-mapping>
+  		<filter-name>CharacterEncodingFilter</filter-name>
+  		<url-pattern>/*</url-pattern>
+  	</filter-mapping>
+  	
+  	<!--不登录不能增删改操作 验证-->
+  	<filter>
+  		<filter-name>LoginFileter</filter-name>
+  		<filter-class>fileter.LoginFileter</filter-class>
+  	</filter>
+  	<filter-mapping>
+  		<filter-name>LoginFileter</filter-name>
+  		<url-pattern>/*</url-pattern>
+  	</filter-mapping>
+  	<!-- 统计请求和响应的时间差 -->
+  <!-- 	
+  	<filter>
+  		<filter-name>Mistiming</filter-name>
+  		<filter-class>fileter.Mistiming</filter-class>
+  	</filter>
+  	<filter-mapping>
+  		<filter-name>Mistiming</filter-name>
+  		<url-pattern>/*</url-pattern>
+  	</filter-mapping> -->
+  	
+  	<!-- listener配置 -->
+  	<listener>
+  		<listener-class>cn.listener.HttpSessionAttr</listener-class>
+  	</listener>
+  	
+  	
 </web-app>
