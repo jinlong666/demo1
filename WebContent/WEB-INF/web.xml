@@ -56,6 +56,34 @@
   	<url-pattern>/SetTitleURl</url-pattern>
   	</servlet-mapping> 
   	
+  	<!-- 添加标题失去焦点验证是否能添加 -->
+  	<servlet>
+  	<servlet-name>AddTitleAjax</servlet-name>
+  	<servlet-class>ajax.AddTitleAjax</servlet-class>
+  	</servlet> 
+  	<servlet-mapping>
+  	<servlet-name>AddTitleAjax</servlet-name>
+  	<url-pattern>/AddTitleAjax</url-pattern>
+  	</servlet-mapping> 
+  	<!--删除标题 -->
+  	<servlet>
+  	<servlet-name>SetTitleDel</servlet-name>
+  	<servlet-class>servlet.SetTitleDel</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  	<servlet-name>SetTitleDel</servlet-name>
+  	<url-pattern>/SetTitleDel</url-pattern>
+  	</servlet-mapping>
+  	
+  	<!--登陆后，免登陆  -->
+  	<servlet>
+  	<servlet-name>LoginCookie</servlet-name>
+  	<servlet-class>servlet.LoginCookie</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  	<servlet-name>LoginCookie</servlet-name>
+  	<url-pattern>/LoginCookie</url-pattern>
+  	</servlet-mapping> 
   	
   	<!--filter配置  -->
  	<!-- 设置字符集 -->
@@ -72,6 +100,15 @@
   		<url-pattern>/*</url-pattern>
   	</filter-mapping>
   	
+  	<!--去除空格-->
+  	<!-- <filter>
+  		<filter-name>TrimFilter</filter-name>
+  		<filter-class>fileter.TrimFilter</filter-class>
+  	</filter>
+  	<filter-mapping>
+  		<filter-name>TrimFilter</filter-name>
+  		<url-pattern>/*</url-pattern>
+  	</filter-mapping> -->
   	<!--不登录不能增删改操作 验证-->
   	<filter>
   		<filter-name>LoginFileter</filter-name>
